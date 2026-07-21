@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP Pengelolaan Sarana &amp; Prasarana (SARPRAS) — Tahun 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101B33;
+    --muted:#4B5B7D;
+    --blue-900:#082044;
+    --blue-800:#0A2A57;
+    --blue-700:#0E4C92;
+    --blue-500:#1B6FCB;
+    --blue-100:#E7F0FC;
+    --blue-50:#F3F8FF;
+    --amber-700:#B87700;
+    --amber-500:#E29B0A;
+    --amber-100:#FFF3D6;
+    --red-700:#B23429;
+    --red-500:#C6473C;
+    --red-100:#FBE6E4;
+    --green-700:#1E7A56;
+    --green-100:#E4F5EE;
+    --paper:#F2F6FC;
+    --white:#FFFFFF;
+    --line:#DCE5F2;
+    --shadow: 0 12px 30px -14px rgba(10,42,87,0.25);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px;}
+  @media(min-width:720px){.wrap{padding:0 32px 100px;}}
+
+  h1,h2,h3{font-family:'Poppins',sans-serif;margin:0;color:var(--blue-900);}
+
+  .eyebrow{
+    font-family:'Roboto Mono',monospace;
+    font-weight:600;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(226,155,10,0.28), transparent 60%),
+      linear-gradient(160deg,var(--blue-900) 0%, var(--blue-700) 62%, var(--blue-500) 100%);
+    color:#fff;
+    padding:56px 20px 88px;
+    overflow:hidden;
+  }
+  @media(min-width:720px){.hero{padding:72px 32px 108px;}}
+  .hero::after{
+    content:"";
+    position:absolute; inset:auto -10% -60% -10%;
+    height:260px;
+    background:radial-gradient(closest-side, rgba(255,255,255,0.10), transparent 70%);
+  }
+  .hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:2;}
+  .brandmark{display:flex;align-items:center;gap:10px;margin-bottom:34px;}
+  .brandmark .logo{width:34px;height:34px;flex:none;}
+  .brandmark .word{font-family:'Poppins',sans-serif;font-weight:800;font-size:17px;letter-spacing:.01em;}
+  .brandmark .word small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.06em;color:rgba(255,255,255,.72);text-transform:uppercase;margin-top:1px;}
+
+  .hero .eyebrow{color:var(--amber-500);opacity:.95;margin-bottom:14px;display:inline-block;background:rgba(255,255,255,0.08);padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.16);}
+  .hero h1{
+    font-weight:900;
+    font-size:34px;
+    line-height:1.14;
+    letter-spacing:-0.01em;
+    max-width:680px;
+    color:#fff;
+  }
+  @media(min-width:640px){.hero h1{font-size:44px;}}
+  .hero p.sub{
+    margin-top:16px;
+    max-width:520px;
+    font-size:15.5px;
+    color:rgba(255,255,255,.82);
+  }
+  .hero-meta{
+    margin-top:32px;
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.10);
+    border:1px solid rgba(255,255,255,0.20);
+    color:#fff;
+    padding:9px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:500;
+  }
+  .pill.strong{background:var(--amber-500);border-color:transparent;color:#231400;font-weight:700;}
+  .pill code{font-family:'Roboto Mono',monospace;font-size:12px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section.card{
+    background:var(--white);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    padding:30px 22px;
+    margin-top:-46px;
+    position:relative;
+    z-index:3;
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  section.card + section.card{margin-top:28px;}
+  @media(min-width:720px){section.card{padding:38px 44px;}}
+
+  .num-ghost{
+    position:absolute;
+    top:-6px; right:14px;
+    font-family:'Poppins',sans-serif;
+    font-weight:900;
+    font-size:110px;
+    line-height:1;
+    color:var(--blue-100);
+    z-index:0;
+    user-select:none;
+    pointer-events:none;
+  }
+  .sec-head{position:relative;z-index:1;display:flex;align-items:flex-start;gap:14px;margin-bottom:6px;}
+  .sec-head .icon-badge{
+    flex:none;
+    width:46px;height:46px;
+    border-radius:13px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--blue-100);color:var(--blue-700);
+  }
+  .sec-head .icon-badge.amber{background:var(--amber-100);color:var(--amber-700);}
+  .sec-head .icon-badge.red{background:var(--red-100);color:var(--red-700);}
+  .sec-head h2{font-size:21px;font-weight:800;letter-spacing:-.01em;}
+  @media(min-width:720px){.sec-head h2{font-size:24px;}}
+  .sec-head .roman{font-family:'Roboto Mono',monospace;color:var(--blue-500);font-weight:600;font-size:12.5px;letter-spacing:.1em;display:block;margin-bottom:3px;}
+
+  .lede{position:relative;z-index:1;color:var(--muted);font-size:15px;max-width:640px;margin-top:10px;}
+
+  .icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ---------- SCOPE CHECKLIST (II) ---------- */
+  .scope-grid{
+    position:relative;z-index:1;
+    display:grid; grid-template-columns:1fr; gap:10px;
+    margin-top:22px;
+  }
+  @media(min-width:600px){.scope-grid{grid-template-columns:1fr 1fr;}}
+  .scope-item{
+    display:flex; align-items:flex-start; gap:10px;
+    background:var(--blue-50);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:14px;
+    font-weight:500;
+  }
+  .scope-item .tick{
+    flex:none;width:20px;height:20px;border-radius:50%;
+    background:var(--blue-700);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    margin-top:1px;
+  }
+  .scope-item .tick svg{width:12px;height:12px;stroke:#fff;stroke-width:3;}
+
+  /* ---------- KETENTUAN UMUM (III) ---------- */
+  .rule-list{position:relative;z-index:1;margin-top:22px;display:flex;flex-direction:column;gap:12px;}
+  .rule-item{display:flex;gap:14px;align-items:flex-start;}
+  .rule-item .chip-num{
+    flex:none;width:28px;height:28px;border-radius:8px;
+    background:var(--blue-900);color:#fff;
+    font-family:'Roboto Mono',monospace;font-weight:600;font-size:13px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .rule-item p{margin:0;font-size:14.5px;color:var(--ink);}
+  .rule-item code.link{
+    font-family:'Roboto Mono',monospace;font-size:13px;color:var(--blue-700);
+    background:var(--blue-100);padding:2px 6px;border-radius:5px;
+  }
+
+  /* ---------- KONSEP (IV) ---------- */
+  .concept-grid{position:relative;z-index:1;margin-top:22px;display:grid;grid-template-columns:1fr;gap:14px;}
+  @media(min-width:720px){.concept-grid{grid-template-columns:1fr 1fr;}}
+  .concept-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 18px 20px;
+    background:linear-gradient(180deg,#fff, var(--blue-50));
+  }
+  .concept-card .k-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .concept-card .k-icon{width:36px;height:36px;border-radius:10px;background:var(--blue-700);color:#fff;display:flex;align-items:center;justify-content:center;flex:none;}
+  .concept-card .k-icon svg{width:18px;height:18px;}
+  .concept-card h3{font-size:15.5px;font-weight:700;color:var(--blue-900);}
+  .concept-card p.ex{font-size:13.5px;color:var(--muted);margin:8px 0 12px;}
+  .concept-card p.ex b{color:var(--ink);font-weight:600;}
+  .status-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:'Roboto Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.03em;
+    background:var(--amber-100);color:var(--amber-700);
+    padding:6px 10px;border-radius:8px;
+  }
+  .rename-flow{display:flex;flex-direction:column;gap:6px;margin-top:6px;}
+  .rename-row{display:flex;align-items:center;gap:8px;font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 10px;}
+  .rename-row svg{width:15px;height:15px;color:var(--blue-500);flex:none;}
+
+  .def-grid{position:relative;z-index:1;margin-top:16px;display:grid;grid-template-columns:1fr;gap:12px;}
+  @media(min-width:720px){.def-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .def-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--white);}
+  .def-card .d-icon{width:34px;height:34px;border-radius:9px;background:var(--blue-100);color:var(--blue-700);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .def-card .d-icon svg{width:17px;height:17px;}
+  .def-card h4{margin:0 0 6px;font-family:'Poppins',sans-serif;font-size:14.5px;font-weight:700;color:var(--blue-900);}
+  .def-card p{margin:0;font-size:13px;color:var(--muted);}
+  .def-note{
+    position:relative;z-index:1;
+    margin-top:14px; font-size:13px; color:var(--muted);
+    background:var(--blue-50); border-left:3px solid var(--blue-500);
+    padding:10px 14px; border-radius:0 10px 10px 0;
+  }
+
+  /* ---------- PROSEDUR (V) - route timeline ---------- */
+  .route{position:relative;z-index:1;margin-top:28px;}
+  .route-line{
+    position:absolute; left:19px; top:6px; bottom:6px; width:2px;
+    background:repeating-linear-gradient(180deg,var(--blue-300,#9CBFEA) 0 8px, transparent 8px 16px);
+  }
+  .step{position:relative;padding-left:56px;margin-bottom:26px;}
+  .step:last-child{margin-bottom:0;}
+  .step .node{
+    position:absolute; left:0; top:0;
+    width:40px;height:40px;border-radius:50%;
+    background:var(--blue-700); color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Poppins',sans-serif;font-weight:800;font-size:15px;
+    box-shadow:0 0 0 5px var(--blue-50);
+    z-index:1;
+  }
+  .step.amber .node{background:var(--amber-500);color:#241500;}
+  .step.green .node{background:var(--green-700);}
+  .step .step-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px;}
+  .step .step-head svg{width:17px;height:17px;color:var(--blue-700);}
+  .step.amber .step-head svg{color:var(--amber-700);}
+  .step.green .step-head svg{color:var(--green-700);}
+  .step h3{font-size:15.5px;font-weight:700;color:var(--ink);}
+  .step p{margin:4px 0 0;font-size:13.8px;color:var(--muted);}
+  .step ul{margin:8px 0 0;padding-left:18px;font-size:13.5px;color:var(--muted);}
+  .step ul li{margin-bottom:3px;}
+  .note-flag{
+    display:inline-flex;align-items:flex-start;gap:7px;
+    margin-top:10px; font-size:12.8px; font-weight:500;
+    background:var(--red-100); color:var(--red-700);
+    padding:8px 11px; border-radius:9px;
+  }
+  .note-flag svg{width:14px;height:14px;flex:none;margin-top:1px;}
+  .note-flag.calm{background:var(--blue-100);color:var(--blue-700);}
+
+  /* ---------- ATTENTION (VI) ---------- */
+  .warn-box{
+    position:relative;z-index:1;
+    margin-top:20px;
+    background:linear-gradient(180deg,#fff,var(--red-100));
+    border:1px solid #F1C6C1;
+    border-radius:16px;
+    padding:20px 20px 22px;
+  }
+  .warn-list{display:flex;flex-direction:column;gap:11px;margin-top:6px;}
+  .warn-list .wi{display:flex;gap:12px;align-items:flex-start;}
+  .warn-list .wi .wn{
+    flex:none;width:24px;height:24px;border-radius:7px;
+    background:var(--red-700);color:#fff;
+    font-family:'Roboto Mono',monospace;font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+  .warn-list p{margin:0;font-size:14px;color:var(--ink);}
+
+  /* ---------- ALUR SINGKAT (VII) ---------- */
+  .flowband{
+    background:linear-gradient(160deg,var(--blue-900),var(--blue-700));
+    border-radius:22px;
+    padding:30px 22px 34px;
+    margin-top:28px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  @media(min-width:720px){.flowband{padding:38px 40px 44px;}}
+  .flowband .eyebrow{color:var(--amber-500);}
+  .flowband h2{color:#fff;font-size:20px;font-weight:800;margin-top:6px;}
+  @media(min-width:720px){.flowband h2{font-size:23px;}}
+  .chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px;}
+  .chip{
+    display:flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.10);
+    border:1px solid rgba(255,255,255,0.22);
+    color:#fff;
+    padding:9px 13px;border-radius:11px;
+    font-size:12.6px;font-weight:600;
+  }
+  .chip.hi{background:var(--amber-500);color:#241500;border-color:transparent;}
+  .chip-arrow{color:rgba(255,255,255,.55);width:15px;height:15px;flex:none;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top:32px;
+    text-align:center;
+    padding-top:6px;
+  }
+  footer .sign{
+    font-family:'Poppins',sans-serif;font-weight:800;font-size:19px;color:var(--blue-900);
+  }
+  footer .sign2{color:var(--amber-700);font-weight:700;font-size:15px;margin-top:2px;}
+  footer .foot-feats{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:22px;
+    margin-top:22px; padding-top:20px; border-top:1px solid var(--line);
+  }
+  footer .foot-feats .ff{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);font-weight:600;}
+  footer .foot-feats svg{width:17px;height:17px;color:var(--blue-700);}
+  footer .src{margin-top:18px;font-size:11.5px;color:#9AA8C2;font-family:'Roboto Mono',monospace;}
+
+  [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ICON SPRITE -->
+<svg style="display:none">
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 6a3 3 0 006 0l-3-6zM19 7l-3 6a3 3 0 006 0l-3-6z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 8l9 5 9-5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><path d="M4 20L20 4M9 4h6M20 9v6"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><path d="M4 6h9a3 3 0 013 3v0a3 3 0 01-3 3H8a3 3 0 00-3 3v0a3 3 0 003 3h12"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15M4 21h16M9 21v-5h6v5M8 9h1M8 13h1M15 9h1M15 13h1"/></symbol>
+  <symbol id="i-room" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 10h16M10 10v10"/></symbol>
+  <symbol id="i-group" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.3"/><path d="M15.6 14.2c2.9.4 5.1 2.6 5.4 5.8"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M14 9l2 2"/></symbol>
+  <symbol id="i-folder-plus" viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M12 12v4M10 14h4"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3L16 10"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h10M17 6h3M4 12h4M11 12h9M4 18h13M20 18h0"/><circle cx="14" cy="6" r="2"/><circle cx="7" cy="12" r="2"/><circle cx="16" cy="18" r="2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="i-sync" viewBox="0 0 24 24"><path d="M20 12a8 8 0 00-14.5-4.5M4 12a8 8 0 0014.5 4.5"/><path d="M4 4v4h4M20 20v-4h-4"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2m-8 0l1 13a1 1 0 001 1h6a1 1 0 001-1l1-13"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M8 10.5h5"/></symbol>
+</svg>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="brandmark">
+      <svg class="logo" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="9" height="9" rx="2.5" fill="#E29B0A"/><rect x="13" y="2" width="9" height="9" rx="2.5" fill="#fff" opacity=".9"/><rect x="2" y="13" width="9" height="9" rx="2.5" fill="#fff" opacity=".9"/><rect x="13" y="13" width="9" height="9" rx="2.5" fill="#E29B0A"/></svg>
+      <div class="word">SP DATADIK<small>Sistem Pengelolaan Sarpras</small></div>
+    </div>
+    <span class="eyebrow">Panduan Resmi · Operator &amp; Kepala Satuan Pendidikan</span>
+    <h1>SOP Pengelolaan Sarana &amp; Prasarana (SARPRAS)</h1>
+    <p class="sub">Pedoman penambahan dan perubahan data Sarpras melalui Sistem Pengelolaan Sarana dan Prasarana, agar data yang tersimpan sesuai dengan kondisi riil di satuan pendidikan.</p>
+    <div class="hero-meta">
+      <span class="pill strong">Tahun 2027</span>
+      <span class="pill">🔗 <code>sp.datadik.kemendikdasmen.go.id</code></span>
+      <span class="pill">Login: akun Kepala Sekolah</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- I. TUJUAN -->
+  <section class="card" data-reveal>
+    <span class="num-ghost">I</span>
+    <div class="sec-head">
+      <div class="icon-badge"><svg class="icon"><use href="#i-target"/></svg></div>
+      <div>
+        <span class="roman">I. TUJUAN</span>
+        <h2>Mengapa SOP ini dibuat</h2>
+      </div>
+    </div>
+    <p class="lede">SOP ini disusun sebagai pedoman bagi Kepala Satuan Pendidikan dan Operator Dapodik dalam melakukan penambahan maupun perubahan data Sarana dan Prasarana melalui SP Datadik, sehingga data yang tersimpan sesuai dengan kondisi riil di satuan pendidikan.</p>
+  </section>
+
+  <!-- II. RUANG LINGKUP -->
+  <section class="card" data-reveal>
+    <span class="num-ghost">II</span>
+    <div class="sec-head">
+      <div class="icon-badge amber"><svg class="icon"><use href="#i-list"/></svg></div>
+      <div>
+        <span class="roman">II. RUANG LINGKUP</span>
+        <h2>Tata cara yang diatur</h2>
+      </div>
+    </div>
+    <div class="scope-grid">
+      <div class="scope-item"><span class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Penambahan ruang</div>
+      <div class="scope-item"><span class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Penambahan bangunan/gedung</div>
+      <div class="scope-item"><span class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Perubahan data ruang</div>
+      <div class="scope-item"><span class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Perubahan nama ruang</div>
+      <div class="scope-item"><span class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Pengajuan perubahan Sarpras</div>
+      <div class="scope-item"><span class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Verifikasi pengajuan</div>
+      <div class="scope-item" style="grid-column:1/-1"><span class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span>Penarikan data ke aplikasi Dapodik Lokal</div>
+    </div>
+  </section>
+
+  <!-- III. KETENTUAN UMUM -->
+  <section class="card" data-reveal>
+    <span class="num-ghost">III</span>
+    <div class="sec-head">
+      <div class="icon-badge"><svg class="icon"><use href="#i-scale"/></svg></div>
+      <div>
+        <span class="roman">III. KETENTUAN UMUM</span>
+        <h2>Aturan dasar sebelum memulai</h2>
+      </div>
+    </div>
+    <div class="rule-list">
+      <div class="rule-item"><span class="chip-num">1</span><p>Seluruh penambahan maupun perubahan data Sarpras dilakukan melalui laman <code class="link">sp.datadik.kemendikdasmen.go.id</code></p></div>
+      <div class="rule-item"><span class="chip-num">2</span><p>Login menggunakan akun Kepala Satuan Pendidikan (Kepala Sekolah).</p></div>
+      <div class="rule-item"><span class="chip-num">3</span><p>Seluruh pengajuan dilakukan melalui menu <b>Pengajuan Sarpras</b>.</p></div>
+      <div class="rule-item"><span class="chip-num">4</span><p>Pengajuan hanya dapat dibuat <b>satu kali</b> untuk setiap proses perubahan — selesaikan seluruh penambahan/perubahan dalam satu pengajuan.</p></div>
+    </div>
+  </section>
+
+  <!-- IV. KONSEP PENGELOLAAN -->
+  <section class="card" data-reveal>
+    <span class="num-ghost">IV</span>
+    <div class="sec-head">
+      <div class="icon-badge amber"><svg class="icon"><use href="#i-layers"/></svg></div>
+      <div>
+        <span class="roman">IV. KONSEP PENGELOLAAN SARPRAS</span>
+        <h2>Memahami jenis pengajuan</h2>
+      </div>
+    </div>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="k-top"><div class="k-icon"><svg><use href="#i-room"/></svg></div><h3>A. Tambah Ruang</h3></div>
+        <p class="ex">Dilakukan bila ada ruang baru yang masih menyatu dengan bangunan yang sudah ada.<br><b>Contoh:</b> Gedung A punya 3 ruang, lalu dibangun 1 ruang tambahan yang masih menyatu dengan Gedung A.</p>
+        <span class="status-badge">Status: Tambah Ruang</span>
+      </div>
+      <div class="concept-card">
+        <div class="k-top"><div class="k-icon"><svg><use href="#i-building"/></svg></div><h3>B. Tambah Bangunan (Gedung)</h3></div>
+        <p class="ex">Dilakukan bila ruang baru dibangun pada bangunan berdiri sendiri, tidak menyatu dengan bangunan yang telah ada.<br><b>Contoh:</b> Membangun Laboratorium Komputer pada gedung baru yang terpisah dari Gedung A.</p>
+        <span class="status-badge">Status: Tambah Bangunan/Gedung</span>
+      </div>
+      <div class="concept-card" style="grid-column:1/-1">
+        <div class="k-top"><div class="k-icon"><svg><use href="#i-edit"/></svg></div><h3>C. Ganti Nama Ruang</h3></div>
+        <p class="ex" style="margin-bottom:8px">Dilakukan bila hanya mengubah identitas/nama ruang tanpa mengubah kondisi fisiknya. <b>Contoh:</b></p>
+        <div class="rename-flow">
+          <div class="rename-row"><span>Ruang A</span><svg><use href="#i-arrow-right"/></svg><span><b>Kelas X-1</b></span></div>
+          <div class="rename-row"><span>Ruang B</span><svg><use href="#i-arrow-right"/></svg><span><b>Kelas X-2</b></span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:26px;font-weight:700;color:var(--ink)">D. Perbedaan Bangunan, Ruang, dan Rombongan Belajar</p>
+    <div class="def-grid">
+      <div class="def-card"><div class="d-icon"><svg><use href="#i-building"/></svg></div><h4>Bangunan / Gedung</h4><p>Konstruksi fisik yang menaungi satu atau lebih ruang.</p></div>
+      <div class="def-card"><div class="d-icon"><svg><use href="#i-room"/></svg></div><h4>Ruang</h4><p>Bagian dari suatu bangunan yang digunakan sesuai fungsi tertentu.</p></div>
+      <div class="def-card"><div class="d-icon"><svg><use href="#i-group"/></svg></div><h4>Rombongan Belajar</h4><p>Kelompok peserta didik dalam kegiatan pembelajaran.</p></div>
+    </div>
+    <div class="def-note">Catatan: bangunan, ruang, dan rombongan belajar merupakan data yang berbeda dan tidak saling menggantikan.</div>
+  </section>
+
+  <!-- V. PROSEDUR PENGAJUAN -->
+  <section class="card" data-reveal>
+    <span class="num-ghost">V</span>
+    <div class="sec-head">
+      <div class="icon-badge"><svg class="icon"><use href="#i-route"/></svg></div>
+      <div>
+        <span class="roman">V. PROSEDUR PENGAJUAN SARPRAS</span>
+        <h2>Jalur 8 langkah, dari login hingga data valid</h2>
+      </div>
+    </div>
+
+    <div class="route">
+      <div class="route-line"></div>
+
+      <div class="step">
+        <div class="node">1</div>
+        <div class="step-head"><svg><use href="#i-key"/></svg><h3>Login ke SP Datadik</h3></div>
+        <p>Masuk ke <b>sp.datadik.kemendikdasmen.go.id</b> menggunakan akun Kepala Sekolah.</p>
+        <span class="note-flag calm"><svg><use href="#i-zoom"/></svg>Jika menu di sisi kiri tidak terlihat, Zoom Out browser dengan Ctrl + − hingga seluruh menu tampil.</span>
+      </div>
+
+      <div class="step amber">
+        <div class="node">2</div>
+        <div class="step-head"><svg><use href="#i-folder-plus"/></svg><h3>Buka menu Pengajuan</h3></div>
+        <p>Masuk ke <b>Sarpras → Pengajuan</b>, lalu klik tombol <b>Pengajuan Baru</b>.</p>
+      </div>
+
+      <div class="step">
+        <div class="node">3</div>
+        <div class="step-head"><svg><use href="#i-edit"/></svg><h3>Isi keterangan pengajuan</h3></div>
+        <p>Isi kolom <b>Keterangan Pengajuan</b> sesuai kebutuhan — contoh: “Tambah dan Ubah Sarpras”. Klik <b>Simpan</b>.</p>
+        <span class="note-flag"><svg><use href="#i-warn"/></svg>Pengajuan hanya bisa dibuat satu kali — selesaikan seluruh perubahan sebelum dikirim untuk diverifikasi.</span>
+      </div>
+
+      <div class="step amber">
+        <div class="node">4</div>
+        <div class="step-head"><svg><use href="#i-check-circle"/></svg><h3>Pastikan pengajuan berhasil dibuat</h3></div>
+        <p>Cek kemunculannya pada menu <b>Pengajuan → Daftar Pengajuan</b>.</p>
+      </div>
+
+      <div class="step">
+        <div class="node">5</div>
+        <div class="step-head"><svg><use href="#i-sliders"/></svg><h3>Ubah data ruang</h3></div>
+        <p>Masuk ke <b>Sarpras → Ruang</b>, lalu:</p>
+        <ul>
+          <li>Pilih ruang yang akan diubah</li>
+          <li>Klik <b>Ajukan Perubahan</b></li>
+          <li>Lakukan seluruh perubahan yang diperlukan (ukuran, kondisi, nama, kapasitas, dll.)</li>
+          <li>Klik <b>Simpan Ruang</b></li>
+        </ul>
+      </div>
+
+      <div class="step amber">
+        <div class="node">6</div>
+        <div class="step-head"><svg><use href="#i-clock"/></svg><h3>Menunggu verifikasi</h3></div>
+        <p>Data otomatis masuk ke <b>Pengajuan → Daftar Pengajuan</b>, menunggu verifikasi oleh Dinas Pendidikan dan Balai Penjaminan Mutu Pendidikan (BPMB).</p>
+      </div>
+
+      <div class="step">
+        <div class="node">7</div>
+        <div class="step-head"><svg><use href="#i-sync"/></svg><h3>Tarik Data Dapodik Lokal</h3></div>
+        <p>Setelah status pengajuan <b>Disetujui/Diverifikasi</b>, lakukan Tarik Data pada aplikasi Dapodik Lokal.</p>
+        <span class="note-flag"><svg><use href="#i-warn"/></svg>Jangan Tarik Data sebelum status pengajuan Disetujui/Diverifikasi.</span>
+      </div>
+
+      <div class="step green">
+        <div class="node">8</div>
+        <div class="step-head"><svg><use href="#i-trash"/></svg><h3>Cek kesesuaian &amp; bereskan pengajuan</h3></div>
+        <p>Pastikan seluruh data telah masuk ke Dapodik Lokal dan sesuai kondisi sebenarnya. Bila sudah sesuai, pengajuan pada SP Datadik dapat dihapus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VI. HAL YANG PERLU DIPERHATIKAN -->
+  <section class="card" data-reveal>
+    <span class="num-ghost" style="color:var(--red-100)">VI</span>
+    <div class="sec-head">
+      <div class="icon-badge red"><svg class="icon"><use href="#i-warn"/></svg></div>
+      <div>
+        <span class="roman" style="color:var(--red-700)">VI. HAL-HAL YANG PERLU DIPERHATIKAN</span>
+        <h2>Perhatian sebelum &amp; sesudah pengajuan</h2>
+      </div>
+    </div>
+    <div class="warn-box">
+      <div class="warn-list">
+        <div class="wi"><span class="wn">1</span><p>Penambahan maupun perubahan Sarpras hanya dapat dilakukan melalui SP Datadik menggunakan akun Kepala Sekolah.</p></div>
+        <div class="wi"><span class="wn">2</span><p>Seluruh perubahan sebaiknya diselesaikan dalam satu pengajuan.</p></div>
+        <div class="wi"><span class="wn">3</span><p>Jangan melakukan Tarik Data Dapodik sebelum pengajuan berstatus Disetujui/Diverifikasi.</p></div>
+        <div class="wi"><span class="wn">4</span><p>Setelah Tarik Data selesai, lakukan pemeriksaan kembali seluruh data Sarpras pada aplikasi Dapodik Lokal.</p></div>
+        <div class="wi"><span class="wn">5</span><p>Pengajuan yang telah selesai diproses dan seluruh datanya telah masuk ke Dapodik dapat dihapus dari laman SP Datadik.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VII. ALUR SINGKAT -->
+  <div class="flowband" data-reveal>
+    <span class="eyebrow">VII. ALUR SINGKAT PROSES</span>
+    <h2>Rangkuman perjalanan satu pengajuan</h2>
+    <div class="chips">
+      <span class="chip"><svg class="chip-arrow" style="color:#fff"><use href="#i-key"/></svg>Login SP Datadik</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Buat Pengajuan Baru</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Tambah/Ubah Data Sarpras</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Simpan Perubahan</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Masuk Daftar Pengajuan</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Verifikasi Dinas &amp; BPMB</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip hi">Status Disetujui</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Tarik Data Dapodik Lokal</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Cek Data Sudah Sesuai</span>
+      <svg class="chip-arrow"><use href="#i-arrow-right"/></svg>
+      <span class="chip">Hapus Pengajuan</span>
+    </div>
+  </div>
+
+  <footer data-reveal>
+    <div class="sign">Selamat bertugas, Bapak/Ibu Operator &amp; Kepala Sekolah</div>
+    <div class="sign2">Salam Validasi 🙏</div>
+    <div class="foot-feats">
+      <div class="ff"><svg><use href="#i-shield"/></svg>Data Valid</div>
+      <div class="ff"><svg><use href="#i-check-circle"/></svg>Proses Tepat</div>
+      <div class="ff"><svg><use href="#i-database"/></svg>Sarpras Termutakhir</div>
+    </div>
+    <div class="src">SOP SARPRAS · TAHUN 2027 · SP DATADIK KEMENDIKDASMEN</div>
+  </footer>
+
+</div>
+
+<script>
+  const els = document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12});
+    els.forEach(el=>io.observe(el));
+  } else {
+    els.forEach(el=>el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
